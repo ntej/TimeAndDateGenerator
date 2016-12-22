@@ -12,10 +12,11 @@ ArrayList<String> list = new ArrayList<>();
         Main main = new Main();
         main.list = TimeZonesProcessor.getAllZoneIdsWithTimeAndDate();
 
-//        for(String list : main.list )
-//        {
-//            System.out.println(list);
-//        }
+        for(String list : main.list )
+        {
+            System.out.println(list);
+            System.out.println("-------");
+        }
 
     }
 }

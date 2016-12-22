@@ -22,6 +22,12 @@ public class TimeZonesProcessor {
 
     protected static ArrayList<String> getAllZoneIdsWithTimeAndDate()
     {
+//        TimeZonesProcessor tztg = new TimeZonesProcessor();
+//
+//        tztg.sb.append("String 1");
+//        tztg.sb.append("String 2");
+//
+//                tztg.allZonesTimeAndDateList.add(tztg.sb.toString());
         TimeZonesProcessor tztg = new TimeZonesProcessor();
 
         for(String zoneId : TimeZone.getAvailableIDs())
@@ -35,11 +41,13 @@ public class TimeZonesProcessor {
 
 
             tztg.allZonesTimeAndDateList.add(tztg.sb.toString());
+
+            tztg.sb.setLength(0);
         }
 
 
         return tztg.allZonesTimeAndDateList;
-    }
+   }
 
 
 
