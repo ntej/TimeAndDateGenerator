@@ -10,7 +10,7 @@ ArrayList<String> list = new ArrayList<>();
     public static void main(String[] args) {
 	// write your code here
         Main main = new Main();
-        main.list = TimeZonesProcessor.getAllZoneIdsWithTimeAndDate();
+        main.list = TimeAndDateGenerator.getAllZoneIdsWithTimeAndDate();
 
         for(String list : main.list )
         {

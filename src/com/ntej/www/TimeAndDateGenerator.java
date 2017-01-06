@@ -10,7 +10,7 @@ import java.util.TimeZone;
 /**
  * Created by navatejareddy on 12/19/16.
  */
-public class TimeZonesProcessor {
+public class TimeAndDateGenerator {
 
 
     DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss a Z ");
@@ -22,13 +22,13 @@ public class TimeZonesProcessor {
 
     protected static ArrayList<String> getAllZoneIdsWithTimeAndDate()
     {
-//        TimeZonesProcessor tztg = new TimeZonesProcessor();
+//        TimeAndDateGenerator tztg = new TimeAndDateGenerator();
 //
 //        tztg.sb.append("String 1");
 //        tztg.sb.append("String 2");
 //
 //                tztg.allZonesTimeAndDateList.add(tztg.sb.toString());
-        TimeZonesProcessor tztg = new TimeZonesProcessor();
+        TimeAndDateGenerator tztg = new TimeAndDateGenerator();
 
         for(String zoneId : TimeZone.getAvailableIDs())
         {
