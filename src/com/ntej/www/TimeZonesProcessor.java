@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.TimeZone;
 
 /**
@@ -13,42 +14,58 @@ import java.util.TimeZone;
 public class TimeZonesProcessor {
 
 
-    DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss a Z ");
+    Hashtable Zone_offset_time = new Hashtable();
+    Hashtable Zone_offset_date = new Hashtable();
 
-    ArrayList<String> allZonesTimeAndDateList = new ArrayList<>();
+ //   DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss a ");
 
-    StringBuilder sb = new StringBuilder();
+    DateFormat offset = new SimpleDateFormat("Z");
+    DateFormat date = new SimpleDateFormat("MM/dd/yyy");
+    DateFormat time = new SimpleDateFormat("HH:mm:ss a");
+
+  //  ArrayList<String> allZonesTimeAndDateList = new ArrayList<>();
+
+  //  StringBuilder sb = new StringBuilder();
 
 
-    protected static ArrayList<String> getAllZoneIdsWithTimeAndDate()
+    protected static Hashtable getZonesWithTime()
     {
-//        TimeZonesProcessor tztg = new TimeZonesProcessor();
-//
-//        tztg.sb.append("String 1");
-//        tztg.sb.append("String 2");
-//
-//                tztg.allZonesTimeAndDateList.add(tztg.sb.toString());
+
         TimeZonesProcessor tztg = new TimeZonesProcessor();
+
+        Date date = new Date();
 
         for(String zoneId : TimeZone.getAvailableIDs())
         {
 
-            tztg.sb.append(zoneId+'\n');
+            tztg.offset.setTimeZone(TimeZone.getTimeZone(zoneId));
+            tztg.time.setTimeZone(TimeZone.getTimeZone(zoneId));
 
-            tztg.formatter.setTimeZone(TimeZone.getTimeZone(zoneId));
-            tztg.sb.append(tztg.formatter.format(new Date()));
+           // tztg.formatter.setTimeZone(TimeZone.getTimeZone(zoneId));
 
-
-
-            tztg.allZonesTimeAndDateList.add(tztg.sb.toString());
-
-            tztg.sb.setLength(0);
+            tztg.Zone_offset_time.put(zoneId+"(UTC "+tztg.offset.format(date)+")",
+                    tztg.time.format(date) );
         }
 
 
-        return tztg.allZonesTimeAndDateList;
+        return tztg.Zone_offset_time;
    }
 
 
+   protected static Hashtable getZonesWIthDate()
+   {
+       TimeZonesProcessor tztg = new TimeZonesProcessor();
+       Date date = new Date();
+
+       for(String zoneId : TimeZone.getAvailableIDs())
+       {
+           tztg.offset.setTimeZone(TimeZone.getTimeZone(zoneId));
+           tztg.date.setTimeZone(TimeZone.getTimeZone(zoneId));
+
+           tztg.Zone_offset_date.put(zoneId+"(UTC "+tztg.offset.format(date)+")",tztg.date.format(date));
+       }
+
+       return tztg.Zone_offset_date;
+   }
 
 }

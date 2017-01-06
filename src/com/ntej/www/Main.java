@@ -1,21 +1,30 @@
 package com.ntej.www;
 
-
-import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 public class Main {
 
-ArrayList<String> list = new ArrayList<>();
+    Hashtable time_offset_zone = new Hashtable();
+    Hashtable date_offset_zone = new Hashtable();
 
     public static void main(String[] args) {
 	// write your code here
         Main main = new Main();
-        main.list = TimeZonesProcessor.getAllZoneIdsWithTimeAndDate();
 
-        for(String list : main.list )
+        main.time_offset_zone = TimeZonesProcessor.getZonesWithTime();
+        main.date_offset_zone = TimeZonesProcessor.getZonesWIthDate();
+
+
+
+        Enumeration e = main.time_offset_zone.keys(); //same key for date_offset_zone
+
+        while(e.hasMoreElements())
         {
-            System.out.println(list);
-            System.out.println("-------");
+            String zone_key = (String) e.nextElement();
+            System.out.println(zone_key + " : " + main.time_offset_zone.get(zone_key));
+            System.out.println(zone_key + " : " + main.date_offset_zone.get(zone_key));
+
         }
 
     }
