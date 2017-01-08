@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TimeAndDateGenerator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TimeAndDateGenerator_jar</output-path>
+    <root id="archive" name="TimeAndDateGenerator.jar">
+      <element id="module-output" name="TimeAndDateGenerator" />
+    </root>
+  </artifact>
+</component>

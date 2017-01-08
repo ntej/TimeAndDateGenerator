@@ -21,7 +21,7 @@ public class TimeAndDateGenerator {
 
 
 
-    protected static ArrayList<String> getAllZoneIdsWithTimeAndDate()
+    public static ArrayList<String> getAllZoneIdsWithTimeAndDate()
     {
         Date date = new Date();
 
