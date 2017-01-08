@@ -12,31 +12,29 @@ import java.util.TimeZone;
  */
 public class TimeAndDateGenerator {
 
-
-    DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss a Z ");
+    DateFormat timeFormatter = new SimpleDateFormat("hh:mm a");
+    DateFormat offsetFormatter = new SimpleDateFormat("Z");
 
     ArrayList<String> allZonesTimeAndDateList = new ArrayList<>();
 
     StringBuilder sb = new StringBuilder();
 
 
+
     protected static ArrayList<String> getAllZoneIdsWithTimeAndDate()
     {
-//        TimeAndDateGenerator tztg = new TimeAndDateGenerator();
-//
-//        tztg.sb.append("String 1");
-//        tztg.sb.append("String 2");
-//
-//                tztg.allZonesTimeAndDateList.add(tztg.sb.toString());
+        Date date = new Date();
+
         TimeAndDateGenerator tztg = new TimeAndDateGenerator();
 
         for(String zoneId : TimeZone.getAvailableIDs())
         {
+            tztg.offsetFormatter.setTimeZone(TimeZone.getTimeZone(zoneId));
+            tztg.timeFormatter.setTimeZone(TimeZone.getTimeZone(zoneId));
 
-            tztg.sb.append(zoneId+'\n');
+            tztg.sb.append(zoneId+"(UTC"+tztg.offsetFormatter.format(date)+")"+'\n');
 
-            tztg.formatter.setTimeZone(TimeZone.getTimeZone(zoneId));
-            tztg.sb.append(tztg.formatter.format(new Date()));
+            tztg.sb.append(tztg.timeFormatter.format(date));
 
 
 
